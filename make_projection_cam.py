@@ -4,14 +4,14 @@ import hou
 
 
 def main(selected_nodes):    
-    nodes = [node for node in selected_nodes if node.type().name() == "mrx::mrx_Chan_Camera::1.0"]
+    nodes = [node for node in selected_nodes if node.type().name() == "cam"]
     if not nodes:
         hou.ui.displayMessage("please select a shot camera node to continue")
         return None    
     for node in nodes:
         projector = hou.node("/obj").createNode("cam", "ProjectionCam")
         children = node.children()
-        cam_children = [node for node in children if node.type().name() == "mrx::mrx_Basic_Camera::1.0"] 
+        cam_children = [node for node in children if node.type().name() == "cam"] 
         for cam_child in cam_children:
             focal = cam_child.parm("focal").evalAsString()
             resx = cam_child.parm("resx").evalAsString()
