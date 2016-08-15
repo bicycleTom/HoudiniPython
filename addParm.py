@@ -39,6 +39,8 @@ def main():
     #folder.addParmTemplate(hou_parm_template2)
     selected_node.setParmTemplateGroup(group)
 
+main()
+
 
 """
 # Code for parameter template
